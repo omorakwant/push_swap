@@ -1,39 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   tools3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odahriz <odahriz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 13:40:18 by odahriz           #+#    #+#             */
-/*   Updated: 2025/03/09 16:47:59 by odahriz          ###   ########.fr       */
+/*   Created: 2025/03/22 17:30:32 by odahriz           #+#    #+#             */
+/*   Updated: 2025/03/22 17:31:03 by odahriz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-long	ft_atoi(const char *nptr)
+int	free_args(char **args)
 {
-	long	result;
-	long	sign;
-	long	i;
+	int	i;
 
-	result = 0;
-	sign = 1;
+	if (!args)
+		return (0);
 	i = 0;
-	while (nptr[i] == ' ' || nptr[i] == '\t' || nptr[i] == '\n'
-		|| nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == '\r')
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	while (args[i])
 	{
-		if (nptr[i] == '-')
-			sign = -1;
+		free(args[i]);
 		i++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	free(args);
+	return (0);
+}
+
+int	stack_free(t_data *data)
+{
+	t_stack	*current;
+	t_stack	*next;
+
+	if (!data)
+		return (0);
+	current = data->stack;
+	while (current)
 	{
-		result = result * 10 + (nptr[i] - '0');
-		i++;
+		next = current->next;
+		free(current);
+		current = next;
 	}
-	return (result * sign);
+	if (data->tab)
+		free(data->tab);
+	free(data);
+	return (0);
 }

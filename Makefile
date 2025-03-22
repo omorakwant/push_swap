@@ -1,33 +1,23 @@
-CC = cc
+CC = cc 
 FLAGS = -Wall -Wextra -Werror
-NAME = pushswap
-OBJ = push_swap.o
+SRC = push_swap.c  tools.c tools2.c tools3.c\
+	ft_split.c 
+OBJ = $(SRC:.c=.o)
+NAME = push_swap
 
-PRINTF = ft_printf/
-LIBFT = libft/
-PRINTFA = ft_printf/printf.a
-LIBFTA = libft/libft.a
+all: $(NAME)
 
-all: $(LIBFTA) $(PRINTFA) $(NAME)
-
-$(LIBFTA):
-	make -C $(LIBFT)
-$(PRINTFA):
-	make -C $(PRINTF)
-
-pushswap: push_swap.o
-	$(CC) $(FLAGS) push_swap.o $(PRINTF)printf.a $(LIBFT)libft.a -o pushswap
+$(NAME): $(OBJ)
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	make clean -C $(PRINTF)
-	make clean -C $(LIBFT)
-	rm -f *.o
+	rm -f $(OBJ)
 
 fclean: clean
-	make fclean -C $(PRINTF)
-	make fclean -C $(LIBFT)
-	rm -rf $(NAME) $(BONUS)
-	
-re : fclean all
+	rm -f $(NAME)
 
-.SECONDARY: $(OBJ)
+re: clean fclean all
+
+.PHONY: all clean fclean re
+
+.SECONDARY:
