@@ -5,45 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: odahriz <odahriz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/22 17:30:32 by odahriz           #+#    #+#             */
-/*   Updated: 2025/03/22 17:31:03 by odahriz          ###   ########.fr       */
+/*   Created: 2025/03/23 12:11:16 by odahriz           #+#    #+#             */
+/*   Updated: 2025/03/23 12:23:42 by odahriz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	free_args(char **args)
+void	ft_lstadd_front(t_stack **lst, t_stack *new)
+{
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
+}
+
+void	ft_lstadd_back(t_stack **lst, t_stack *new)
+{
+	t_stack	*p;
+
+	if (!lst || !new)
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	p = *lst;
+	while (p->next)
+		p = p->next;
+	p->next = new;
+}
+
+t_stack	*get_last(t_stack *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
+}
+
+int	is_it_here(int num, int *tab, int min, int max)
 {
 	int	i;
 
-	if (!args)
-		return (0);
-	i = 0;
-	while (args[i])
+	i = min;
+	while (i < max)
 	{
-		free(args[i]);
+		if (tab[i] == num)
+			return (1);
 		i++;
 	}
-	free(args);
 	return (0);
 }
 
-int	stack_free(t_data *data)
+int	get_index(int num, int *tab)
 {
-	t_stack	*current;
-	t_stack	*next;
+	int	i;
 
-	if (!data)
-		return (0);
-	current = data->stack;
-	while (current)
+	i = 0;
+	while (tab[i])
 	{
-		next = current->next;
-		free(current);
-		current = next;
+		if (num == tab[i])
+			return (i);
 	}
-	if (data->tab)
-		free(data->tab);
-	free(data);
 	return (0);
 }

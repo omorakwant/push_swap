@@ -6,7 +6,7 @@
 /*   By: odahriz <odahriz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:21 by odahriz           #+#    #+#             */
-/*   Updated: 2025/03/22 17:27:24 by odahriz          ###   ########.fr       */
+/*   Updated: 2025/03/23 12:29:31 by odahriz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	is_int(char **s)
 	}
 	return (1);
 }
+
 int	is_sorted(t_stack *stack)
 {
 	t_stack	*tmp;
@@ -62,6 +63,7 @@ int	is_max(char **args)
 	}
 	return (0);
 }
+
 int	is_dup(t_data *stack)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: odahriz <odahriz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 07:30:19 by odahriz           #+#    #+#             */
-/*   Updated: 2025/03/22 17:25:10 by odahriz          ###   ########.fr       */
+/*   Updated: 2025/03/23 12:12:34 by odahriz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,4 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return ((int)(r * sign));
-}
-void	free_exit(t_data *a, t_data *b, char **args)
-{
-	free_args(args);
-	stack_free(a);
-	stack_free(b);
 }

@@ -6,7 +6,7 @@
 /*   By: odahriz <odahriz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 06:26:45 by odahriz           #+#    #+#             */
-/*   Updated: 2025/03/22 17:25:28 by odahriz          ###   ########.fr       */
+/*   Updated: 2025/03/23 12:41:21 by odahriz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,12 @@ typedef struct s_data
 
 int					sa(t_stack **stack_a);
 int					sb(t_stack **stack_b);
-int					ss(t_stack **stack_a, t_stack **stack_b);
 int					pa(t_stack **stack_a, t_stack **stack_b);
 int					pb(t_stack **stack_a, t_stack **stack_b);
 int					ra(t_stack **stack_a);
 int					rb(t_stack **stack_b);
-int					rr(t_stack **stack_a, t_stack **stack_b);
 int					rra(t_stack **stack_a);
 int					rrb(t_stack **stack_b);
-int					rrr(t_stack **stack_a, t_stack **stack_b);
 int					is_sorted(t_stack *stack);
 int					is_int(char **s);
 int					is_dup(t_data *stack);
@@ -64,13 +61,10 @@ int					set_range(t_stack *stack, t_data *data);
 void				sort_chunks(t_stack **a, t_stack **b, t_data *data);
 void				ft_lstadd_front(t_stack **lst, t_stack *new);
 void				ft_lstadd_back(t_stack **lst, t_stack *new);
-void				ft_lstadd_one(t_stack *stack, int num);
 t_stack				*ft_lstlast(t_stack *lst);
 int					ft_lstsize(t_stack *lst);
 int					ft_index(t_stack *stack, int num);
 void				get_arr(t_stack *stack, t_data **data);
-void				ft_lstdelone(t_stack **stack);
-t_stack				*stack_b_init(t_stack *b, int argc);
 void				get_arr(t_stack *stack, t_data **data);
 int					checker(t_data *stack, char **args);
 t_stack				*get_last(t_stack *stack);
