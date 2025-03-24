@@ -6,7 +6,7 @@
 /*   By: odahriz <odahriz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 06:23:32 by odahriz           #+#    #+#             */
-/*   Updated: 2025/03/23 12:38:27 by odahriz          ###   ########.fr       */
+/*   Updated: 2025/03/24 12:26:24 by odahriz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	input_to_stack(char **av, int ac, t_data **data)
 	int		i;
 
 	i = 1;
+	(void)ac;
 	(*data)->stack = malloc(sizeof(t_stack));
 	if (!(*data)->stack)
 		return (0);
@@ -110,9 +111,11 @@ int	main(int ac, char **av)
 	if (args == NULL)
 		return (1);
 	input_to_stack(args, ac - 1, &a);
+	if (is_sorted(a->stack))
+		return (0);
 	if (!checker(a, args) || !is_int(args))
 	{
-		write(2, "error\n", 6);
+		write(2, "Error\n", 6);
 		free_exit(a, b, args);
 		exit(1);
 	}

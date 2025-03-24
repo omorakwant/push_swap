@@ -1,5 +1,5 @@
 CC = cc 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 SRC = push_swap.c  tools.c tools2.c tools3.c tools4.c\
 	ft_split.c chunk_sort.c bubble_sort.c small_sort.c\
 	op_stack_a.c op_stack_b.c mem_management.c

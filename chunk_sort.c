@@ -6,7 +6,7 @@
 /*   By: odahriz <odahriz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 12:01:55 by odahriz           #+#    #+#             */
-/*   Updated: 2025/03/23 12:29:27 by odahriz          ###   ########.fr       */
+/*   Updated: 2025/03/23 16:14:58 by odahriz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	set_range(t_stack *stack, t_data *data)
 {
 	int	range;
 
+(void)stack;
 	if (data->size <= 16)
 		range = 5;
 	else if (data->size <= 100)
