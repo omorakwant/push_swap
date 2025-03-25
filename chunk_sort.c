@@ -46,7 +46,7 @@ int	set_range(t_stack *stack, t_data *data)
 {
 	int	range;
 
-(void)stack;
+	(void)stack;
 	if (data->size <= 16)
 		range = 5;
 	else if (data->size <= 100)

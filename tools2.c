@@ -6,7 +6,7 @@
 /*   By: odahriz <odahriz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:21 by odahriz           #+#    #+#             */
-/*   Updated: 2025/03/23 12:29:31 by odahriz          ###   ########.fr       */
+/*   Updated: 2025/03/25 01:53:58 by odahriz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,29 @@ int	is_sorted(t_stack *stack)
 
 int	is_max(char **args)
 {
-	int	i;
+	int		i;
+	int		j;
+	long	value;
+	int		sign;
 
-	i = 0;
-	while (args[i])
+	i = -1;
+	while (args[++i])
 	{
-		if (ft_atoi(args[i]) > 2147483647 || ft_atoi(args[i]) < -2147483648)
-			return (1);
-		i++;
+		j = 0;
+		sign = 1;
+		value = 0;
+		if (args[i][j] == '-' || args[i][j] == '+')
+		{
+			if (args[i][j++] == '-')
+				sign = -1;
+		}
+		while (args[i][j] >= '0' && args[i][j] <= '9')
+		{
+			if (check_overflow(value * 10 + (args[i][j] - '0'), sign))
+				return (1);
+			value = value * 10 + (args[i][j] - '0');
+			j++;
+		}
 	}
 	return (0);
 }
@@ -88,12 +103,12 @@ int	is_dup(t_data *stack)
 
 int	checker(t_data *stack, char **args)
 {
-	int	i;
-
-	i = 0;
 	if (is_dup(stack) || is_max(args))
 		return (0);
 	if (is_sorted(stack->stack))
+	{
+		free_exit(stack, NULL, args);
 		return (0);
+	}
 	return (1);
 }

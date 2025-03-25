@@ -6,7 +6,7 @@
 /*   By: odahriz <odahriz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 06:26:45 by odahriz           #+#    #+#             */
-/*   Updated: 2025/03/23 12:41:21 by odahriz          ###   ########.fr       */
+/*   Updated: 2025/03/25 01:39:42 by odahriz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ int					ft_max(t_stack *stack);
 int					ft_min(t_stack *stack);
 void				sort(t_data *a, t_data *b);
 void				free_exit(t_data *a, t_data *b, char **args);
+int					check_overflow(long value, int sign);
 
 #endif

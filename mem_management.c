@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools3.c                                           :+:      :+:    :+:   */
+/*   mem_management.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odahriz <odahriz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:30:32 by odahriz           #+#    #+#             */
-/*   Updated: 2025/03/23 12:12:43 by odahriz          ###   ########.fr       */
+/*   Updated: 2025/03/25 01:47:14 by odahriz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ int	stack_free(t_data *data)
 
 void	free_exit(t_data *a, t_data *b, char **args)
 {
-	free_args(args);
-	stack_free(a);
-	stack_free(b);
+	if (args)
+		free_args(args);
+	if (a)
+		stack_free(a);
+	if (b)
+		stack_free(b);
 }

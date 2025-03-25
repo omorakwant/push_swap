@@ -6,7 +6,7 @@
 /*   By: odahriz <odahriz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 07:30:19 by odahriz           #+#    #+#             */
-/*   Updated: 2025/03/23 12:12:34 by odahriz          ###   ########.fr       */
+/*   Updated: 2025/03/25 02:01:58 by odahriz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,13 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return ((int)(r * sign));
+}
+
+int	check_overflow(long value, int sign)
+{
+	if (sign > 0 && value > INT_MAX)
+		return (1);
+	if (sign < 0 && (-value) < INT_MIN)
+		return (1);
+	return (0);
 }

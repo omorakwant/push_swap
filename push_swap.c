@@ -6,7 +6,7 @@
 /*   By: odahriz <odahriz@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 06:23:32 by odahriz           #+#    #+#             */
-/*   Updated: 2025/03/24 12:26:24 by odahriz          ###   ########.fr       */
+/*   Updated: 2025/03/25 02:00:39 by odahriz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,29 +69,28 @@ t_data	*stack_init(void)
 char	**av_filter(char **av)
 {
 	int		i;
-	char	*str;
 	char	*tmp;
+	char	*str;
 	char	**args;
 
-	if (!av[0] || !av[0][0])
-	{
-		write(2, "Error\n", 7);
-		return (NULL);
-	}
 	i = 0;
+	if (!av[i] || !av[i][0])
+		return (NULL);
 	str = ft_strdup(av[i]);
+	if (!str)
+		return (NULL);
 	i++;
 	while (av[i])
 	{
 		tmp = ft_strjoin(str, av[i]);
 		free(str);
 		if (!tmp || !av[i][0])
-			return (NULL);
+			return (free(tmp), NULL);
 		str = tmp;
 		i++;
 	}
-	args = ft_split(tmp, ' ');
-	free(tmp);
+	args = ft_split(str, ' ');
+	free(str);
 	return (args);
 }
 
@@ -109,10 +108,10 @@ int	main(int ac, char **av)
 		return (0);
 	args = av_filter(av + 1);
 	if (args == NULL)
-		return (1);
+		return (free_exit(a, b, args), 1);
 	input_to_stack(args, ac - 1, &a);
 	if (is_sorted(a->stack))
-		return (0);
+		return (free_exit(a, b, args), 0);
 	if (!checker(a, args) || !is_int(args))
 	{
 		write(2, "Error\n", 6);
